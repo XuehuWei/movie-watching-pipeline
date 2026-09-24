@@ -236,6 +236,34 @@ These settings can be changed with `--asr-model`, `--language`, `--asr-device`,
 
 ## Event-Level Processing
 
+Event-level processing uses two related tables:
+
+1. An event timing table defines the event boundaries. See
+   `example/hcp_movie2_event_timing.csv` for an HCP movie timing example.
+2. An event-text table contains the transcript aggregated within those
+   boundaries. This is the file passed to `--event-csv`; see
+   `example/event_text_example.csv`. A blank table containing all event IDs and
+   matching HCP boundaries is provided as
+   `example/hcp_movie2_event_text_template.csv`.
+
+The timing table is included to document how the events were defined. The
+linguistic script does not read it directly. Before running the script, align
+the transcript to each interval and create a CSV with these required columns:
+
+```text
+event,time_period,text
+Event 0,00:00-00:26,"Example dialogue assigned to Event 0."
+Event 1,00:26-00:35,"Example dialogue assigned to Event 1."
+```
+
+`time_period` uses the half-open interval `[start, end)`: an event beginning at
+`00:26` includes transcript content at or after 26 seconds and before its end.
+The `event` labels and boundaries must match the timing table.
+
+The included HCP timing example contains Events 0-29 and ends at `13:31`. It
+documents the event segmentation used for that example; it is not a statement
+of the source video's full file duration.
+
 ```bash
 python linguistic_features_events_only.py \
   --event-csv /path/to/movie_text_channel_sentiment.csv \
