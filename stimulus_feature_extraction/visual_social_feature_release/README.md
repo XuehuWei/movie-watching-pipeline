@@ -28,6 +28,7 @@ social_features_yolo_mediapipe_events_only.py # event-level command-line entry p
 social_features_yolo_mediapipe.py             # detection and aggregation functions
 requirements.txt                              # Python dependencies
 README.md
+example/MOVIE2_HO1_k29_event_segmentation.csv # event segmentation example
 ```
 
 `social_features_yolo_mediapipe.py` is a shared library module. **Do not run it
@@ -200,7 +201,7 @@ Event-level extraction requires a segmentation CSV in addition to the video:
 ```bash
 python social_features_yolo_mediapipe_events_only.py \
   --video /path/to/movie.mp4 \
-  --segments-csv /path/to/event_segmentation.csv \
+  --segments-csv ./example/MOVIE2_HO1_k29_event_segmentation.csv \
   --output-dir ./outputs \
   --sample-fps 5
 ```
@@ -219,16 +220,22 @@ The segmentation CSV must contain these columns:
 | `Start (mm:ss)` | Event start time. `hh:mm:ss` is also accepted. | `00:00` |
 | `End (mm:ss)` | Event end time. `hh:mm:ss` is also accepted. | `00:26` |
 
-Example:
+The repository includes a complete event segmentation example:
+
+[MOVIE2_HO1_k29_event_segmentation.csv](example/MOVIE2_HO1_k29_event_segmentation.csv)
+
+Its first rows follow this structure:
 
 ```csv
-Event,Start (mm:ss),End (mm:ss)
-Event 0,00:00,00:26
-Event 1,00:26,00:35
+Event,Start (TR),End (TR),Duration (TRs),Duration (s),Start (mm:ss),End (mm:ss)
+Event 0,0,26,30,30,00:00,00:26
+Event 1,26,35,9,9,00:26,00:35
 ```
 
-Additional columns are allowed and ignored by this script. Event rows with
-missing times or `end <= start` are skipped.
+The event-level script reads only `Event`, `Start (mm:ss)`, and `End (mm:ss)`.
+The TR and duration columns are retained to document the original annotation
+but are not used in feature extraction. Additional columns are allowed and
+ignored. Event rows with missing times or `end <= start` are skipped.
 
 ## Time Convention
 
