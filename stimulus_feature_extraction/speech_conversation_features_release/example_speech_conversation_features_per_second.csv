@@ -1,0 +1,4 @@
+second,timestamp,speech,speaker_count_second,overlap_speech_second,turn_change_second,prosody_valid,prosody_arousal,loudness_mean,pitch_std,jitter_mean,diarization_mode,prosody_mode
+0,00:00,0,0,0.0,0,0,-0.31,0.001,0.0,0.0,pyannote,opensmile
+1,00:01,1,1,0.0,0,1,0.12,0.15,4.8,0.006,pyannote,opensmile
+2,00:02,1,2,0.18,1,1,0.46,0.24,8.1,0.012,pyannote,opensmile
