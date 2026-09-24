@@ -1,4 +1,4 @@
-# Per-Second and Event-Level Social-Visual Feature Extraction
+# Per-Second and Event-Level Visual-Social Feature Extraction
 
 This repository extracts social-visual features at either one-second or
 event-defined resolution. It combines YOLO person detection with MediaPipe Face
