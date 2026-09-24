@@ -1,0 +1,4 @@
+faster-whisper>=1.2
+requests>=2.32
+spacy>=3.7,<4
+wordfreq>=3.1

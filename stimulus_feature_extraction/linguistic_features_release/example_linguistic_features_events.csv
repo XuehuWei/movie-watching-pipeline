@@ -1,0 +1,3 @@
+window_type,window_id,time_period,text,token_count,unique_token_count,ttr,mattr_25,mean_word_length,std_word_length,mean_zipf_frequency,low_frequency_ratio,very_low_frequency_ratio,wordfreq_available,mean_sentence_length,clause_density,dep_tree_depth_mean,mean_surprisal,predictability_score,llm_model,lm_note,lm_error
+event,Event 0,00:00-00:08,"Where are we going?",4,4,1.0,1.0,4.0,1.224745,6.1,0.0,0.0,1,4.0,0.0,2.0,6.0,0.82,google/gemma-4-12b,"Synthetic example showing relatively predictable language.",
+event,Event 1,00:08-00:18,"I do not know yet, but we need to leave now.",11,10,0.909091,0.909091,3.181818,1.336086,6.0,0.0,0.0,1,11.0,0.0,2.5,7.5,0.68,google/gemma-4-12b,"Synthetic example showing moderate uncertainty.",
