@@ -36,13 +36,69 @@ The complete pipeline is designed to include four major components:
 
 ## Current Implementation Status
 
-The current public implementation includes the **stimulus feature extraction**
-component, with pipelines for:
 
-- Social-visual feature extraction
-- Speech and conversation feature extraction
-- Per-second feature extraction
-- Event-level feature extraction
+The current public implementation includes the following stimulus feature
+extraction pipelines:
 
-The dynamic ISC/ISFC, HMM-based brain-state, and statistical-modeling modules
-will be added as they are finalized and validated.
+- Social-visual feature extraction at per-second and event-level resolutions
+- Speech and conversation feature extraction at per-second and event-level resolutions
+- Linguistic feature extraction at per-second and event-level resolutions
+
+The dynamic ISC/ISFC, HMM-based brain-state, semantic-feature, low-level
+sensory-control, and statistical-modeling modules will be added as they are
+finalized and validated.
+
+## Available Modules
+
+### Social-Visual Features
+
+[stimulus_feature_extraction/social_visual_features_release](stimulus_feature_extraction/visual_social_features_release)
+
+This module extracts person, face, proximity, gaze, expression, gesture, and
+facial-affect features using YOLO, MediaPipe, OpenCV, and NumPy.
+
+Available resolutions:
+
+- Per-second
+- Event-level
+
+### Speech and Conversation Features
+
+[stimulus_feature_extraction/speech_conversation_features_release](stimulus_feature_extraction/speech_conversation_features_release)
+
+This module extracts speech presence, speaker count, overlapping speech,
+turn-taking, loudness, pitch variability, jitter, and prosody-arousal features
+using FFmpeg, pyannote.audio, and openSMILE.
+
+Available resolutions:
+
+- Per-second
+- Event-level
+
+### Linguistic Features
+
+[stimulus_feature_extraction/linguistic_features_release](stimulus_feature_extraction/linguistic_features_release)
+
+This module extracts lexical diversity, word-frequency, word-length, syntactic
+complexity, and LLM-estimated language uncertainty features using
+faster-whisper, spaCy, wordfreq, and a user-selected LM Studio model.
+
+Available resolutions:
+
+- Per-second directly from video
+- Event-level from a prepared event-text CSV
+
+## Data and Security
+
+This repository does not include copyrighted movie files, extracted audio,
+restricted transcripts, private participant data, model weights, or access
+tokens.
+
+Users are responsible for ensuring that they have permission to process and
+share input videos, transcripts, neuroimaging data, and derived results.
+
+## Research Use
+
+The extracted variables are computational stimulus descriptors. Heuristic gaze,
+facial-expression, emotion, prosody, and LLM-estimated language variables should
+not be interpreted as clinical or diagnostic measurements.
