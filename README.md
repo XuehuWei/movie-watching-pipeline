@@ -1,64 +1,48 @@
-# Movie-Watching Stimulus Feature Extraction Pipeline
+# Movie-Watching Stimulus Feature Extraction and fMRI Analysis Pipeline
 
-This repository contains reproducible pipelines for extracting time-resolved
-social-visual and speech-conversation features from movie stimuli.
+A reproducible analysis pipeline for naturalistic movie-fMRI, including
+stimulus feature extraction, dynamic inter-subject correlation and functional
+connectivity analysis (ISC/ISFC), hidden Markov model (HMM)-based brain-state
+analysis, and statistical modeling.
 
-Features can be extracted at:
+## Pipeline Scope
 
-- Per-second resolution
-- Event-level resolution based on a segmentation CSV
+The complete pipeline is designed to include four major components:
 
-## Modules
+1. **Stimulus feature extraction**
+   - Social-visual features
+   - Speech and conversation features
+   - Linguistic and semantic features
+   - Low-level visual and auditory control features
+   - Per-second and event-level representations
 
-### Social-Visual Features
+2. **Dynamic ISC/ISFC analysis**
+   - Time-resolved inter-subject correlation (ISC)
+   - Inter-subject functional correlation (ISFC)
+   - Sliding-window and event-level neural synchrony
+   - Group and condition comparisons
 
-Directory:
+3. **HMM-based brain-state analysis**
+   - Identification of recurring brain states
+   - State-transition probabilities
+   - State occupancy and dwell time
+   - Alignment between brain-state transitions and movie events
 
-[stimulus_feature_extraction/social_visual_features_release](stimulus_feature_extraction/social_visual_features_release)
+4. **Statistical modeling**
+   - Relationships between stimulus features and neural responses
+   - Event-level and time-resolved regression models
+   - Mixed-effects and group-level analyses
+   - Control for low-level sensory and temporal confounds
 
-This module uses YOLO, MediaPipe, OpenCV, and NumPy to extract:
+## Current Implementation Status
 
-- Person and face counts
-- Person and face screen area
-- Interpersonal distance and proximity
-- Mutual-gaze proxy
-- Facial-expression intensity
-- Gesture intensity
-- Heuristic facial-affect scores
+The current public implementation includes the **stimulus feature extraction**
+component, with pipelines for:
 
-### Speech and Conversation Features
+- Social-visual feature extraction
+- Speech and conversation feature extraction
+- Per-second feature extraction
+- Event-level feature extraction
 
-Directory:
-
-[stimulus_feature_extraction/speech_conversation_features_release](stimulus_feature_extraction/speech_conversation_features_release)
-
-This module uses FFmpeg, pyannote.audio, and openSMILE to extract:
-
-- Speech presence and speech ratio
-- Speaker count
-- Overlapping speech
-- Speaker turn changes and turn-taking rate
-- Prosody arousal
-- Loudness
-- Pitch variability
-- Jitter
-
-## Repository Structure
-
-```text
-movie-watching-pipeline/
-├── README.md
-└── stimulus_feature_extraction/
-    ├──visual_social _features_release/
-    │   ├── README.md
-    │   ├── requirements.txt
-    │   ├── social_features_yolo_mediapipe.py
-    │   ├── social_features_yolo_mediapipe_per_second.py
-    │   └── social_features_yolo_mediapipe_events_only.py
-    └── speech_conversation_features_release/
-        ├── README.md
-        ├── requirements.txt
-        ├── install_opensmile.sh
-        ├── speech_conversation_features.py
-        ├── speech_conversation_features_per_second.py
-        └── speech_conversation_features_events_only.py
+The dynamic ISC/ISFC, HMM-based brain-state, and statistical-modeling modules
+will be added as they are finalized and validated.
