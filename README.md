@@ -52,7 +52,7 @@ finalized and validated.
 
 ### Social-Visual Features
 
-[stimulus_feature_extraction/social_visual_features_release](stimulus_feature_extraction/visual_social_features_release)
+[stimulus_feature_extraction/social_visual_features_release](stimulus_feature_extraction/visual_social_feature_release)
 
 This module extracts person, face, proximity, gaze, expression, gesture, and
 facial-affect features using YOLO, MediaPipe, OpenCV, and NumPy.
