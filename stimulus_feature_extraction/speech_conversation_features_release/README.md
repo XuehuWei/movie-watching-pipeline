@@ -30,7 +30,7 @@ install_opensmile.sh                         # one-time macOS/Linux installer
 requirements.txt
 .gitignore
 README.md
-example/event_segmentation_example.csv
+example/MOVIE2_HO1_k29_event_segmentation.csv
 example/example_speech_conversation_features.csv
 example/example_speech_conversation_features_per_second.csv
 ```
@@ -233,16 +233,23 @@ names:
 | `Start (mm:ss)` | Inclusive event start. `hh:mm:ss` is also accepted. | `00:00` |
 | `End (mm:ss)` | Exclusive event end. `hh:mm:ss` is also accepted. | `00:26` |
 
-Minimal example:
+The repository includes the complete segmentation example used for the HCP
+movie event-level analysis:
+
+[MOVIE2_HO1_k29_event_segmentation.csv](example/MOVIE2_HO1_k29_event_segmentation.csv)
+
+Its format is:
 
 ```csv
-Event,Start (mm:ss),End (mm:ss)
-Event 0,00:00,00:26
-Event 1,00:26,00:35
+Event,Start (TR),End (TR),Duration (TRs),Duration (s),Start (mm:ss),End (mm:ss)
+Event 0,0,26,30,30,00:00,00:26
+Event 1,26,35,9,9,00:26,00:35
 ```
 
-Other CSV columns are allowed and ignored. Rows with missing times or
-`end <= start` are skipped.
+The script reads only `Event`, `Start (mm:ss)`, and `End (mm:ss)`. The TR and
+duration columns document the original annotation and are not used in feature
+extraction. Other CSV columns are allowed and ignored. Rows with missing times
+or `end <= start` are skipped.
 
 ## Run Event-Level Extraction
 
@@ -251,7 +258,7 @@ With environment variables configured:
 ```bash
 python speech_conversation_features_events_only.py \
   --video /path/to/movie.mp4 \
-  --segments-csv /path/to/event_segmentation.csv \
+  --segments-csv ./example/MOVIE2_HO1_k29_event_segmentation.csv \
   --output-dir ./outputs \
   --hf-token "<YOUR_HF_TOKEN>"
 ```
@@ -261,7 +268,7 @@ Alternatively, pass openSMILE paths explicitly:
 ```bash
 python speech_conversation_features_events_only.py \
   --video /path/to/movie.mp4 \
-  --segments-csv /path/to/event_segmentation.csv \
+  --segments-csv ./example/MOVIE2_HO1_k29_event_segmentation.csv \
   --output-dir ./outputs \
   --opensmile-bin /path/to/SMILExtract \
   --opensmile-config /path/to/eGeMAPSv01a.conf
